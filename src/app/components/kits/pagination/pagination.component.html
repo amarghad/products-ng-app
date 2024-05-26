@@ -1,0 +1,29 @@
+<nav class="flex justify-between my-5" aria-label="Page navigation example">
+  <div>
+    <p class="text-slate-600">{{ paginator.minOffset }} - {{ paginator.maxOffset }} élements par page</p>
+    <select [(ngModel)]="paginator.itemsPerPage">
+      <option *ngFor="let _ of [].constructor(20);let i = index" [value]="i+1">{{ i+1 }}</option>
+    </select>
+  </div>
+  <ul class="inline-flex space-x-2 text-sm">
+    <!-- Previous page button -->
+    <li>
+      <button *ngIf="!paginator.isFirstPage" class="px-3 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 py-2 shadow-sm font-medium"
+         (click)="paginator.jumpByStep(-1)">Précédant</button>
+      <span *ngIf="paginator.isFirstPage" class="block px-3 text-gray-700 bg-slate-200 border border-gray-300 rounded-lg py-2 shadow-sm font-medium cursor-no-drop">Précédant</span>
+    </li>
+
+    <li *ngFor="let page of paginator.pages">
+      <span *ngIf="page == (paginator.currentPage$ | async)" class="block px-3 text-white bg-blue-600 border border-blue-600 rounded-lg py-2 shadow-sm font-medium">{{ page }}</span>
+      <button type="button" *ngIf="page != (paginator.currentPage$ | async)" class="px-3 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 py-2 shadow-sm font-medium"
+              (click)="paginator.jump(page)">{{ page }}</button>
+    </li>
+
+    <li>
+      <!-- Next page button -->
+      <button *ngIf="!paginator.isLastPage" class="px-3 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 py-2 shadow-sm font-medium"
+         (click)="paginator.jumpByStep(+1)">Suivant</button>
+      <span *ngIf="paginator.isLastPage" class="block px-3 text-gray-700 bg-slate-200 border border-gray-300 rounded-lg py-2 shadow-sm font-medium cursor-no-drop">Suivant</span>
+    </li>
+  </ul>
+</nav>
