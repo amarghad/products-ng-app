@@ -1,6 +1,6 @@
 import {Subject} from "rxjs";
 
-enum Status {
+export enum SecretaryStatus {
   STARTED,
   LOADING,
   LOADED,
@@ -9,9 +9,9 @@ enum Status {
 
 export class HttpSecretary<T> {
 
-  public static readonly STATUS = Status;
+  public static readonly STATUS = SecretaryStatus;
 
-  public status$ : Subject<Status> = new Subject<Status>();
+  public status$ : Subject<SecretaryStatus> = new Subject<SecretaryStatus>();
   public output$ : Subject<T> = new Subject<T>();
 
 

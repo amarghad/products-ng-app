@@ -15,6 +15,7 @@ export class ProductRepositoryService implements RepositoryService<Product> {
 
   constructor(private http : HttpClient) { }
 
+  @secretarySubscribe
   get(id: string | number) : HttpSecretary<Product> {
     // @ts-ignore
     return this.http.get<Product>(`${ProductRepositoryService.REPOSITORY_URL}/${id}`);

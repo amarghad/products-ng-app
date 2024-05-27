@@ -11,18 +11,6 @@ import {PageRequest} from "../../../utils/page-request";
 })
 export class NavbarComponent {
 
-  protected keyword : string = "";
+  constructor(public cartState : CartStateService) {}
 
-  constructor(public cartState : CartStateService,
-              public searchState : SearchStateService,
-              public productState : ProductStateService,
-              public productRepository : ProductRepositoryService) {}
-
-  handleSearch() {
-    this.searchState.keyword = this.keyword;
-    this.productState.productsSecretary = this.productRepository.search(
-      this.searchState.keyword,
-      new PageRequest(1, 10)
-    );
-  }
 }

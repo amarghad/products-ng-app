@@ -4,11 +4,13 @@ import { IndexProductsComponent } from "./components/products/index/index.produc
 import {AddProductComponent} from "./components/products/add/add.product.component";
 import {UpdateProductComponent} from "./components/products/update/update.product.component";
 import {CartComponent} from "./components/cart/cart.component";
+import {ViewProductComponent} from "./components/products/view/view.product.component";
 
 const routes: Routes = [
   {path: 'products', component: IndexProductsComponent},
   {path: 'products/add', component: AddProductComponent},
   {path: 'products/update/:id', component: UpdateProductComponent},
+  {path: 'products/:id', component: ViewProductComponent},
   {path: 'cart', component : CartComponent}
 ];
 
